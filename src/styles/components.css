@@ -1,0 +1,330 @@
+@layer components {
+  /* ---------- Mise en page ---------- */
+
+  .container-page {
+    width: 100%;
+    max-width: 72rem;
+    margin-inline: auto;
+    padding-inline: clamp(1rem, 4vw, 2rem);
+  }
+
+  .section {
+    padding-block: clamp(4rem, 9vw, 7rem);
+  }
+
+  .skip-link {
+    position: absolute;
+    left: 1rem;
+    top: -4rem;
+    z-index: 100;
+    padding: 0.6rem 1rem;
+    background-color: var(--ink);
+    color: var(--paper);
+    font-family: var(--font-mono);
+    font-size: 0.875rem;
+    transition: top 0.15s ease;
+  }
+
+  .skip-link:focus {
+    top: 1rem;
+  }
+
+  /* ---------- Typographie ---------- */
+
+  .display {
+    font-family: var(--display);
+    font-weight: 400;
+    text-transform: var(--display-transform);
+    letter-spacing: var(--display-tracking);
+    line-height: 1.02;
+  }
+
+  .eyebrow {
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    letter-spacing: 0.04em;
+    color: var(--prompt);
+  }
+
+  .lead {
+    font-size: clamp(1.125rem, 2.2vw, 1.35rem);
+    line-height: 1.5;
+  }
+
+  .text-muted {
+    color: var(--muted);
+  }
+
+  /* Titre de section : cartouche noir penché en clair, gothique souligné en sombre. */
+  .section-title {
+    display: inline-block;
+    font-family: var(--display);
+    font-weight: 400;
+    font-size: calc(clamp(2.4rem, 7vw, 4.25rem) * var(--display-scale));
+    line-height: 1.05;
+    letter-spacing: var(--display-tracking);
+    text-transform: var(--display-transform);
+  }
+
+  :root:not([data-theme='dark']) .section-title {
+    padding: 0.06em 0.32em 0.1em;
+    background-color: var(--ink);
+    color: var(--paper);
+    transform: rotate(-1.5deg);
+    box-shadow: 6px 6px 0 var(--accent);
+  }
+
+  :root[data-theme='dark'] .section-title {
+    padding-bottom: 0.18em;
+    border-bottom: 4px solid var(--accent);
+  }
+
+  /* ---------- Panneau (case de manga / carte sombre) ---------- */
+
+  .panel {
+    position: relative;
+    background-color: var(--surface);
+    border: var(--border-w) solid var(--line);
+    box-shadow: var(--panel-shadow);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease,
+      border-color 0.2s ease,
+      background-color 0.35s ease;
+  }
+
+  :root[data-theme='dark'] .panel::before {
+    content: '';
+    position: absolute;
+    inset: -1px -1px auto -1px;
+    height: 3px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.35s ease;
+  }
+
+  .panel-interactive:hover,
+  .panel-interactive:focus-within {
+    transform: translate(-3px, -3px);
+    box-shadow: var(--panel-shadow-hover);
+  }
+
+  :root[data-theme='dark'] .panel-interactive:hover,
+  :root[data-theme='dark'] .panel-interactive:focus-within {
+    transform: translateY(-3px);
+    border-color: var(--accent);
+  }
+
+  :root[data-theme='dark'] .panel-interactive:hover::before,
+  :root[data-theme='dark'] .panel-interactive:focus-within::before {
+    transform: scaleX(1);
+  }
+
+  /* Rend toute la carte cliquable à partir du lien de son titre. */
+  .stretched-link::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+
+  .above-stretched {
+    position: relative;
+    z-index: 2;
+  }
+
+  /* ---------- Boutons ---------- */
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.55rem;
+    min-height: 2.9rem;
+    padding: 0.55rem 1.1rem;
+    border: var(--border-w) solid var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.9rem;
+    font-weight: 500;
+    line-height: 1.2;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+      transform 0.15s ease,
+      box-shadow 0.15s ease,
+      background-color 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .btn-primary {
+    background-color: var(--ink);
+    color: var(--paper);
+    box-shadow: 4px 4px 0 var(--accent);
+  }
+
+  .btn-primary:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 var(--accent);
+  }
+
+  .btn-ghost {
+    background-color: var(--surface);
+    color: var(--ink);
+  }
+
+  .btn-ghost:hover {
+    background-color: var(--ink);
+    color: var(--paper);
+  }
+
+  :root[data-theme='dark'] .btn-primary {
+    background-color: var(--accent);
+    border-color: var(--accent);
+    color: var(--on-accent);
+    box-shadow: none;
+  }
+
+  :root[data-theme='dark'] .btn-primary:hover {
+    background-color: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+    transform: translateY(-2px);
+  }
+
+  :root[data-theme='dark'] .btn-ghost {
+    background-color: transparent;
+    border-color: var(--muted);
+  }
+
+  :root[data-theme='dark'] .btn-ghost:hover {
+    background-color: transparent;
+    border-color: var(--accent);
+    color: var(--accent);
+  }
+
+  /* Bouton carré pour les bascules de thème, de langue et le menu. */
+  .icon-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 2.75rem;
+    height: 2.75rem;
+    padding-inline: 0.6rem;
+    border: var(--border-w) solid var(--line);
+    background-color: var(--surface);
+    color: var(--ink);
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    font-weight: 500;
+    cursor: pointer;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .icon-btn:hover {
+    background-color: var(--ink);
+    border-color: var(--ink);
+    color: var(--paper);
+  }
+
+  /* ---------- Étiquettes ---------- */
+
+  .tag {
+    display: inline-block;
+    padding: 0.12rem 0.5rem;
+    border: 1.5px solid var(--line);
+    background-color: var(--surface);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    line-height: 1.5;
+    white-space: nowrap;
+  }
+
+  :root[data-theme='dark'] .tag {
+    border-width: 1px;
+    background-color: var(--soft);
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 0.1rem 0.5rem;
+    background-color: var(--accent);
+    color: var(--on-accent);
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.5;
+  }
+
+  /* ---------- Liens ---------- */
+
+  .link {
+    color: var(--ink);
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+    transition:
+      background-color 0.15s ease,
+      color 0.15s ease;
+  }
+
+  .link:hover {
+    background-color: var(--accent);
+    color: var(--on-accent);
+    text-decoration-color: transparent;
+  }
+
+  .nav-link {
+    position: relative;
+    padding: 0.35rem 0.15rem;
+    font-family: var(--font-mono);
+    font-size: 0.8125rem;
+    text-decoration: none;
+    white-space: nowrap;
+  }
+
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 3px;
+    background-color: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 0.25s ease;
+  }
+
+  .nav-link:hover::after,
+  .nav-link[aria-current='true']::after {
+    transform: scaleX(1);
+  }
+
+  /* ---------- Listes à puces ---------- */
+
+  .bullet-list {
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .bullet-list > li {
+    position: relative;
+    padding-left: 1.4rem;
+  }
+
+  .bullet-list > li::before {
+    content: '>';
+    position: absolute;
+    left: 0;
+    top: 0.05em;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    color: var(--prompt);
+  }
+}

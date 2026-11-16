@@ -1,0 +1,95 @@
+/*
+ * Jetons de design.
+ * Thème clair  = manga  : papier blanc, encre noire, bordures épaisses, trames.
+ * Thème sombre = metal  : fond noir, titres gothiques, invite de commande verte.
+ * La couleur d'accent change selon la section visible (attribut data-accent sur <html>).
+ */
+
+/* Déclarer --accent comme une couleur permet de l'animer d'une section à l'autre. */
+@property --accent {
+  syntax: '<color>';
+  inherits: true;
+  initial-value: #d4111e;
+}
+
+:root,
+:root[data-theme='light'] {
+  color-scheme: light;
+
+  --paper: #ffffff;
+  --surface: #ffffff;
+  --soft: #efefef;
+  --ink: #0b0b0b;
+  --muted: #4b4b4b;
+  --line: #0b0b0b;
+
+  --red: #d4111e;
+  --violet: #6d2fd5;
+  --blue: #1557c0;
+  --teal: #0b7a7a;
+  --green: #0f7a37;
+  --on-accent: #ffffff;
+  --prompt: var(--accent);
+
+  --display: 'Anton', 'Arial Narrow', Impact, sans-serif;
+  --display-transform: uppercase;
+  --display-tracking: 0.01em;
+  --display-scale: 1;
+
+  --border-w: 3px;
+  --panel-shadow: 6px 6px 0 var(--ink);
+  --panel-shadow-hover: 10px 10px 0 var(--accent);
+}
+
+:root[data-theme='dark'] {
+  color-scheme: dark;
+
+  --paper: #0b0b0b;
+  --surface: #141414;
+  --soft: #1e1e1e;
+  --ink: #f2f2f2;
+  --muted: #a6a6a6;
+  --line: #303030;
+
+  --red: #ff4d5a;
+  --violet: #b08cff;
+  --blue: #5aa9ff;
+  --teal: #3dd6c6;
+  --green: #3ddc84;
+  --on-accent: #0b0b0b;
+  --prompt: #3ddc84;
+
+  --display: 'Pirata One', 'Old English Text MT', Georgia, serif;
+  --display-transform: none;
+  --display-tracking: 0.005em;
+  --display-scale: 1.12;
+
+  --border-w: 1px;
+  --panel-shadow: none;
+  --panel-shadow-hover: none;
+}
+
+:root {
+  --accent: var(--red);
+  transition: --accent 0.7s ease;
+}
+
+:root[data-accent='a-propos'] {
+  --accent: var(--violet);
+}
+
+:root[data-accent='projets'] {
+  --accent: var(--blue);
+}
+
+:root[data-accent='competences'] {
+  --accent: var(--teal);
+}
+
+:root[data-accent='parcours'] {
+  --accent: var(--green);
+}
+
+:root[data-accent='contact'] {
+  --accent: var(--red);
+}
