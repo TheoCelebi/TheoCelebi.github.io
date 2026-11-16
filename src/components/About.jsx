@@ -30,7 +30,7 @@ export default function About() {
               </h3>
               <ul className="flex flex-wrap gap-3">
                 {about.interests.map((interest, index) => (
-                  <li key={index} className="panel px-3 py-2 text-sm">
+                  <li key={index} className="panel panel-sm px-3 py-2 text-sm">
                     <span className="font-semibold">{t(interest.label)}</span>
                     {interest.detail ? <span className="text-muted"> · {t(interest.detail)}</span> : null}
                   </li>

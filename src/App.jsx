@@ -3,8 +3,11 @@ import About from './components/About.jsx';
 import Footer from './components/Footer.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
+import ProjectPage from './components/ProjectPage.jsx';
+import Projects from './components/Projects.jsx';
 import ScrollProgress from './components/ScrollProgress.jsx';
-import { sections, ui } from './content/site.js';
+import { findProject } from './content/projects.js';
+import { site, sections, ui } from './content/site.js';
 import { LanguageProvider, useLanguage } from './context/LanguageContext.jsx';
 import { ThemeProvider } from './context/ThemeContext.jsx';
 import { useActiveSection } from './hooks/useActiveSection.js';
@@ -18,6 +21,7 @@ function Home() {
     <>
       <Hero />
       <About />
+      <Projects />
     </>
   );
 }
@@ -36,10 +40,13 @@ function Shell() {
   }, [activeSection]);
 
   // Titre et description de la page dans la langue active.
+  const project = isProject ? findProject(route.slug) : null;
   useEffect(() => {
-    document.title = t(ui.meta.title);
-    document.querySelector('meta[name="description"]')?.setAttribute('content', t(ui.meta.description));
-  }, [t]);
+    document.title = project ? `${t(project.title)} — ${site.name}` : t(ui.meta.title);
+    document
+      .querySelector('meta[name="description"]')
+      ?.setAttribute('content', project ? t(project.tagline) : t(ui.meta.description));
+  }, [t, project]);
 
   // Position de défilement au changement de vue.
   useEffect(() => {
@@ -65,7 +72,7 @@ function Shell() {
       <ScrollProgress />
       <Header activeSection={activeSection} />
       <main id="contenu" tabIndex={-1} className="outline-none">
-        <Home />
+        {isProject ? <ProjectPage slug={route.slug} /> : <Home />}
       </main>
       <Footer />
     </>

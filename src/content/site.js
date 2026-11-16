@@ -122,6 +122,7 @@ export const projectsSection = {
   linksLabel: { fr: 'Liens', en: 'Links' },
   readMore: { fr: 'Lire la fiche', en: 'Read the case study' },
   featured: { fr: 'Projet phare', en: 'Featured project' },
+  wip: { fr: 'En cours', en: 'In progress' },
   back: { fr: 'Tous les projets', en: 'All projects' },
   previous: { fr: 'Projet précédent', en: 'Previous project' },
   next: { fr: 'Projet suivant', en: 'Next project' },
