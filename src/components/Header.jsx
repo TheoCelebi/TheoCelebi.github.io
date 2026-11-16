@@ -51,13 +51,13 @@ export default function Header({ activeSection }) {
           aria-label={t(ui.home)}
         >
           <Logo size={38} />
-          <span className="hidden font-mono text-sm font-medium sm:inline" aria-hidden="true">
+          <span className="hidden font-mono text-sm font-medium sm:inline md:hidden lg:inline" aria-hidden="true">
             theo.celebi
           </span>
         </a>
 
         <nav aria-label={t(ui.mainNav)} className="ml-auto hidden md:block">
-          <ul className="flex items-center gap-6">{links}</ul>
+          <ul className="flex items-center gap-4 lg:gap-6">{links}</ul>
         </nav>
 
         <div className="ml-auto flex items-center gap-2 md:ml-4">
