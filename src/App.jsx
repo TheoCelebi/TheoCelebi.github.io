@@ -1,4 +1,5 @@
 import { useEffect, useRef } from 'react';
+import About from './components/About.jsx';
 import Footer from './components/Footer.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
@@ -16,6 +17,7 @@ function Home() {
   return (
     <>
       <Hero />
+      <About />
     </>
   );
 }
