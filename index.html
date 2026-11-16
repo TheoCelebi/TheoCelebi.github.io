@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr" data-theme="light" data-accent="accueil">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Théo Celebi — Développeur fullstack</title>
+    <meta
+      name="description"
+      content="Portfolio de Théo Celebi, développeur fullstack : applications web en React et Node.js, projets Python et C, robotique et algorithmique."
+    />
+    <meta name="author" content="Théo Celebi" />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Théo Celebi — Développeur fullstack" />
+    <meta
+      property="og:description"
+      content="Je construis des applis web de bout en bout, du serveur à l'écran."
+    />
+    <meta property="og:url" content="https://theocelebi.github.io/" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <script>
+      // Applique le thème et la langue avant le premier affichage pour éviter tout flash.
+      (function () {
+        var root = document.documentElement;
+        try {
+          var theme = localStorage.getItem('theme');
+          if (theme !== 'light' && theme !== 'dark') {
+            theme = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+          }
+          root.dataset.theme = theme;
+
+          var lang = localStorage.getItem('lang');
+          if (lang !== 'fr' && lang !== 'en') {
+            lang = (navigator.language || 'fr').toLowerCase().indexOf('fr') === 0 ? 'fr' : 'en';
+          }
+          root.lang = lang;
+        } catch (error) {
+          root.dataset.theme = 'light';
+        }
+      })();
+    </script>
+  </head>
+  <body>
+    <div id="root"></div>
+    <noscript>
+      <p style="padding: 2rem; font-family: system-ui, sans-serif">
+        Théo Celebi, développeur fullstack. Ce site a besoin de JavaScript pour s'afficher.
+        Contact : theo.celebi@gmail.com
+      </p>
+    </noscript>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>
