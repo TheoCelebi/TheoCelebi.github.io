@@ -3,6 +3,7 @@ import About from './components/About.jsx';
 import Footer from './components/Footer.jsx';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
+import Journey from './components/Journey.jsx';
 import ProjectPage from './components/ProjectPage.jsx';
 import Projects from './components/Projects.jsx';
 import ScrollProgress from './components/ScrollProgress.jsx';
@@ -24,6 +25,7 @@ function Home() {
       <About />
       <Projects />
       <Skills />
+      <Journey />
     </>
   );
 }
