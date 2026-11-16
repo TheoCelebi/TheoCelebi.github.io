@@ -1,4 +1,5 @@
 import portraitSmall from '../assets/portrait-480.webp';
+import portraitMedium from '../assets/portrait-640.webp';
 import portraitLarge from '../assets/portrait-880.webp';
 import { about } from '../content/site.js';
 import { useLanguage } from '../context/LanguageContext.jsx';
@@ -43,7 +44,7 @@ export default function About() {
             <img
               className="block h-auto w-full"
               src={portraitLarge}
-              srcSet={`${portraitSmall} 480w, ${portraitLarge} 880w`}
+              srcSet={`${portraitSmall} 480w, ${portraitMedium} 640w, ${portraitLarge} 880w`}
               sizes="(min-width: 768px) 380px, 92vw"
               width="880"
               height="982"
