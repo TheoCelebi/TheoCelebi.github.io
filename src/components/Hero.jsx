@@ -22,6 +22,8 @@ const SPEED_LINES = [
   [200, 600, 3],
 ];
 
+// Le dessin est recadré en hauteur sur les écrans larges : les éléments importants
+// (foyer des lignes, onomatopée) restent dans la bande centrale, entre y = 200 et y = 420.
 function MangaArt({ sfx }) {
   return (
     <svg
@@ -39,15 +41,16 @@ function MangaArt({ sfx }) {
       <polygon points="150,0 400,0 400,290" fill="url(#trame)" />
       <g className="speed-lines" stroke="currentColor" fill="none">
         {SPEED_LINES.map(([x, y, width]) => (
-          <path key={`${x}-${y}`} d={`M400 470L${x} ${y}`} strokeWidth={width} />
+          <path key={`${x}-${y}`} d={`M400 400L${x} ${y}`} strokeWidth={width} />
         ))}
       </g>
-      <polygon points="255,600 400,385 400,600" fill="var(--accent)" />
+      <polygon points="250,600 400,330 400,600" fill="var(--accent)" />
       <text
         className="hero-sfx"
-        x="120"
-        y="545"
-        transform="rotate(-9 120 545)"
+        x="385"
+        y="385"
+        textAnchor="end"
+        transform="rotate(-9 385 385)"
         fontFamily="Anton, Impact, sans-serif"
         fontSize="62"
         fill="var(--paper)"

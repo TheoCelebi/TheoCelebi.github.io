@@ -133,7 +133,7 @@
 
   .speed-lines {
     animation: speed 2.4s ease-in-out infinite alternate;
-    transform-origin: 100% 78%;
+    transform-origin: 100% 66.7%;
   }
 
   @keyframes speed {
