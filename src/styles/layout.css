@@ -1,0 +1,123 @@
+@layer components {
+  /* ---------- En-tête ---------- */
+
+  .site-header {
+    border-bottom: var(--border-w) solid var(--line);
+    transition: background-color 0.35s ease;
+  }
+
+  .mobile-menu {
+    border-top: var(--border-w) solid var(--line);
+    background-color: var(--paper);
+  }
+
+  .mobile-menu .nav-link {
+    display: inline-block;
+    padding-block: 0.7rem;
+    font-size: 1rem;
+  }
+
+  .lang-on {
+    font-weight: 700;
+    text-decoration: underline;
+    text-decoration-color: var(--accent);
+    text-decoration-thickness: 2px;
+    text-underline-offset: 4px;
+  }
+
+  .lang-off {
+    color: var(--muted);
+  }
+
+  .icon-btn:hover .lang-off {
+    color: inherit;
+  }
+
+  /* ---------- Accueil ---------- */
+
+  .hero-name {
+    font-size: calc(clamp(4.25rem, 17vw, 11rem) * var(--display-scale));
+    line-height: 0.95;
+  }
+
+  /* Les deux lignes du nom glissent en place. Pas de fondu : le titre est le plus
+     grand élément de la page et doit être peint dès la première image. */
+  .hero-name > span {
+    width: fit-content;
+    animation: slide-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+  }
+
+  .hero-name > span:last-child {
+    animation-delay: 0.08s;
+  }
+
+  @keyframes slide-in {
+    from {
+      transform: translateX(-32px) skewX(-8deg);
+    }
+  }
+
+  /* Coup de feutre sous le nom de famille (thème clair). */
+  :root:not([data-theme='dark']) .hero-name-last {
+    padding-inline: 0.04em;
+    background-image: linear-gradient(var(--accent), var(--accent));
+    background-repeat: no-repeat;
+    background-position: 0 88%;
+    background-size: 0% 20%;
+    animation:
+      slide-in 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) 0.08s both,
+      mark 0.6s ease 0.6s forwards;
+  }
+
+  @keyframes mark {
+    to {
+      background-size: 100% 20%;
+    }
+  }
+
+  .hero-role {
+    width: fit-content;
+    padding: 0.3rem 0.8rem;
+    border: 3px solid var(--ink);
+    background-color: var(--paper);
+    box-shadow: 4px 4px 0 var(--ink);
+    font-weight: 600;
+  }
+
+  :root[data-theme='dark'] .hero-role {
+    padding: 0;
+    border: 0;
+    background-color: transparent;
+    box-shadow: none;
+    color: var(--accent);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+
+  .hero-art-dark {
+    display: none;
+  }
+
+  :root[data-theme='dark'] .hero-art-light {
+    display: none;
+  }
+
+  :root[data-theme='dark'] .hero-art-dark {
+    display: block;
+  }
+
+  /* Sur petit écran, le décor passe derrière le texte : on l'atténue pour garder le texte lisible. */
+  @media (max-width: 767px) {
+    .hero-art {
+      opacity: 0.28;
+    }
+  }
+
+  /* ---------- Pied de page ---------- */
+
+  .site-footer {
+    border-top: var(--border-w) solid var(--line);
+  }
+}

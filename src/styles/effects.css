@@ -114,6 +114,7 @@
   /* ---------- Égaliseur (thème sombre) ---------- */
 
   .eq-bar {
+    transform-box: fill-box;
     transform-origin: right center;
     animation: eq 1.8s ease-in-out infinite alternate;
     animation-delay: calc(var(--i) * -0.23s);
