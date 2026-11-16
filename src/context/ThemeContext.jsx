@@ -1,4 +1,4 @@
-import { createContext, useCallback, useContext, useEffect, useMemo, useState } from 'react';
+import { createContext, useCallback, useContext, useLayoutEffect, useMemo, useState } from 'react';
 
 const ThemeContext = createContext(null);
 
@@ -12,7 +12,8 @@ function readInitialTheme() {
 export function ThemeProvider({ children }) {
   const [theme, setTheme] = useState(readInitialTheme);
 
-  useEffect(() => {
+  // useLayoutEffect : l'attribut est en place avant les effets qui lisent les couleurs du thème.
+  useLayoutEffect(() => {
     document.documentElement.dataset.theme = theme;
     document.querySelector('meta[name="theme-color"]')?.setAttribute('content', THEME_COLORS[theme]);
     try {

@@ -12,8 +12,9 @@ import Skills from './components/Skills.jsx';
 import { findProject } from './content/projects.js';
 import { site, sections, ui } from './content/site.js';
 import { LanguageProvider, useLanguage } from './context/LanguageContext.jsx';
-import { ThemeProvider } from './context/ThemeContext.jsx';
+import { ThemeProvider, useTheme } from './context/ThemeContext.jsx';
 import { useActiveSection } from './hooks/useActiveSection.js';
+import { useCursor } from './hooks/useCursor.js';
 import { useHashRoute } from './hooks/useHashRoute.js';
 
 // Sections observées pour la navigation et la couleur d'accent.
@@ -35,6 +36,7 @@ function Home() {
 function Shell() {
   const route = useHashRoute();
   const { t } = useLanguage();
+  const { theme } = useTheme();
   const isProject = route.view === 'project';
   const visibleSection = useActiveSection(SECTION_IDS, !isProject);
   const activeSection = isProject ? 'projets' : visibleSection;
@@ -44,6 +46,9 @@ function Shell() {
   useEffect(() => {
     document.documentElement.dataset.accent = activeSection;
   }, [activeSection]);
+
+  // Le pointeur de la souris reprend le thème et la couleur d'accent.
+  useCursor(theme, activeSection);
 
   // Titre et description de la page dans la langue active.
   const project = isProject ? findProject(route.slug) : null;

@@ -33,6 +33,21 @@
     color: inherit;
   }
 
+  /* Pointeur personnalisé (voir hooks/useCursor.js). Réservé aux appareils à souris ;
+     tant que les variables ne sont pas définies, le pointeur du système s'applique. */
+  @media (pointer: fine) {
+    html {
+      cursor: var(--cursor-default, auto);
+    }
+
+    a,
+    button,
+    summary,
+    label {
+      cursor: var(--cursor-pointer, pointer);
+    }
+  }
+
   h1,
   h2,
   h3 {
