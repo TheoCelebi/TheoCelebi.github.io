@@ -113,6 +113,10 @@
     .hero-art {
       opacity: 0.28;
     }
+
+    .hero-sfx {
+      display: none;
+    }
   }
 
   /* ---------- Pied de page ---------- */

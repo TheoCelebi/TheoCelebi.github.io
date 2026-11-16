@@ -61,14 +61,12 @@ export default function Header({ activeSection }) {
         </nav>
 
         <div className="ml-auto flex items-center gap-2 md:ml-4">
-          <button
-            type="button"
-            className="icon-btn"
-            onClick={toggleLang}
-            aria-label={t(ui.switchLang)}
-            lang={lang === 'fr' ? 'en' : 'fr'}
-          >
-            <span aria-hidden="true" className="flex items-center gap-1">
+          <button type="button" className="icon-btn" onClick={toggleLang}>
+            {/* Le nom accessible reprend le texte visible « FR / EN », précédé de l'action. */}
+            <span className="sr-only" lang={lang === 'fr' ? 'en' : 'fr'}>
+              {t(ui.switchLang)} :{' '}
+            </span>
+            <span className="flex items-center gap-1">
               <span className={lang === 'fr' ? 'lang-on' : 'lang-off'}>FR</span>
               <span className="lang-off">/</span>
               <span className={lang === 'en' ? 'lang-on' : 'lang-off'}>EN</span>

@@ -44,6 +44,7 @@ function MangaArt({ sfx }) {
       </g>
       <polygon points="255,600 400,385 400,600" fill="var(--accent)" />
       <text
+        className="hero-sfx"
         x="120"
         y="545"
         transform="rotate(-9 120 545)"
