@@ -6,6 +6,7 @@ import Hero from './components/Hero.jsx';
 import ProjectPage from './components/ProjectPage.jsx';
 import Projects from './components/Projects.jsx';
 import ScrollProgress from './components/ScrollProgress.jsx';
+import Skills from './components/Skills.jsx';
 import { findProject } from './content/projects.js';
 import { site, sections, ui } from './content/site.js';
 import { LanguageProvider, useLanguage } from './context/LanguageContext.jsx';
@@ -22,6 +23,7 @@ function Home() {
       <Hero />
       <About />
       <Projects />
+      <Skills />
     </>
   );
 }
